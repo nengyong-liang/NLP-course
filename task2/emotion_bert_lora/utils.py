@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import os
-from sklearn.metrics import ConfusionMatrixDisplay, RocCurveDisplay, roc_curve, auc
+from sklearn.metrics import ConfusionMatrixDisplay, RocCurveDisplay, roc_curve, auc, confusion_matrix
 from config import Config
 
 def plot_loss_curve(log_path: str, save_dir: str):

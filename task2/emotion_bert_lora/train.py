@@ -5,6 +5,8 @@ import pandas as pd
 from config import Config
 from model import get_model_with_lora
 from data_loader import get_dataloaders
+from evaluate import evaluate_model
+import pdb
 
 def train_model(config: Config):
     train_loader, dev_loader, _, _ = get_dataloaders(config)
@@ -29,10 +31,23 @@ def train_model(config: Config):
             
             total_loss += loss.item()
         
-        avg_loss = total_loss / len(train_loader)
+        # 评估训练集
+        avg_loss = total_loss / len(train_loader) #该loss是训练集的loss
         print(f"Epoch {epoch+1} - Avg Loss: {avg_loss:.4f}")
-        log_data.append({"epoch": epoch + 1, "loss": avg_loss})
-    
+
+        # 评估验证集
+        eval_metrics = evaluate_model(model, dev_loader, config, model_name="lora")
+        print(f"Evaluation Metrics: {eval_metrics['accuracy']}")
+
+        # 保存训练日志 记录训练损失和评估指标
+        log_data.append({"epoch": epoch + 1, "loss": avg_loss,"eval_metrics_accuracy": eval_metrics['accuracy']})
+        
+        # pdb.set_trace()
+        pd.DataFrame(log_data).to_csv(config.train_log_path, index=False)
+        # 每5个epoch保存一次模型，和当前模型的指标
+        # if (epoch + 1) % 5 == 0:
+        model.save_pretrained(f"./logs/epoch_{epoch+1}_lora_model")
+
     # 保存训练日志
     pd.DataFrame(log_data).to_csv(config.train_log_path, index=False)
     # 可选：保存模型

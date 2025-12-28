@@ -1,0 +1,80 @@
+
+=== Base Model (No Fine-tuning) ===
+Accuracy: 0.3333
+F1 (weighted): 0.1667
+AUC (macro): 0.4487
+Confusion Matrix:
+[[20  0  0]
+ [20  0  0]
+ [20  0  0]]
+
+              precision    recall  f1-score   support
+
+    Negative       0.33      1.00      0.50        20
+     Neutral       0.00      0.00      0.00        20
+    Positive       0.00      0.00      0.00        20
+
+    accuracy                           0.33        60
+   macro avg       0.11      0.33      0.17        60
+weighted avg       0.11      0.33      0.17        60
+
+
+=== LoRA Fine-tuned Model ===
+Accuracy: 0.3667
+F1 (weighted): 0.3311
+AUC (macro): 0.4796
+Confusion Matrix:
+[[15  1  4]
+ [ 6  4 10]
+ [14  3  3]]
+
+              precision    recall  f1-score   support
+
+    Negative       0.43      0.75      0.55        20
+     Neutral       0.50      0.20      0.29        20
+    Positive       0.18      0.15      0.16        20
+
+    accuracy                           0.37        60
+   macro avg       0.37      0.37      0.33        60
+weighted avg       0.37      0.37      0.33        60
+
+
+=== Base Model (No Fine-tuning) ===
+Accuracy: 0.3333
+F1 (weighted): 0.1667
+AUC (macro): 0.4154
+Confusion Matrix:
+[[20  0  0]
+ [20  0  0]
+ [20  0  0]]
+
+              precision    recall  f1-score   support
+
+    Negative       0.33      1.00      0.50        20
+     Neutral       0.00      0.00      0.00        20
+    Positive       0.00      0.00      0.00        20
+
+    accuracy                           0.33        60
+   macro avg       0.11      0.33      0.17        60
+weighted avg       0.11      0.33      0.17        60
+
+
+=== LoRA Fine-tuned Model ===
+Accuracy: 0.3333
+F1 (weighted): 0.1667
+AUC (macro): 0.3917
+Confusion Matrix:
+[[ 0 20  0]
+ [ 0 20  0]
+ [ 0 20  0]]
+
+              precision    recall  f1-score   support
+
+    Negative       0.00      0.00      0.00        20
+     Neutral       0.33      1.00      0.50        20
+    Positive       0.00      0.00      0.00        20
+
+    accuracy                           0.33        60
+   macro avg       0.11      0.33      0.17        60
+weighted avg       0.11      0.33      0.17        60
+
