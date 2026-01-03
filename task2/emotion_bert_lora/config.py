@@ -2,7 +2,9 @@ import torch
 
 class Config:
     # 数据路径
+    # mini路径
     data_dir = r"D:\1_LNY\code\0_data\NLP-course\task2\mini"
+    # linux路径
     
     # 模型
     model_name = "bert-base-chinese"  # 中文 DistilBERT
