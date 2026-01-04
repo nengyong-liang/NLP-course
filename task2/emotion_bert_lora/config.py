@@ -5,7 +5,8 @@ class Config:
     # mini路径
     data_dir = r"D:\1_LNY\code\0_data\NLP-course\task2\mini"
     # linux路径
-    
+    if torch.cuda.is_available():
+        data_dir = "/root/autodl-tmp/LNY/data/NLP-course/task2"  
     # 模型
     model_name = "bert-base-chinese"  # 中文 DistilBERT
     num_labels = 3
@@ -21,6 +22,7 @@ class Config:
     
     # 设备
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"Using device: {device}")
     
     # 日志
     log_dir = "./logs"
