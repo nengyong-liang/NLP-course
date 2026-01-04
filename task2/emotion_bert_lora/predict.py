@@ -15,9 +15,15 @@ from config import Config
 from data_loader import get_dataloaders, load_data
 import textwrap
 
-# 设置中文字体（避免中文乱码）
-plt.rcParams['font.sans-serif'] = ['SimHei']
-plt.rcParams['axes.unicode_minus'] = False
+# 如果当前系统是windows，则使用微软雅黑字体
+if os.name == 'nt':
+    plt.rcParams['font.sans-serif'] = ['Microsoft YaHei']
+    plt.rcParams['axes.unicode_minus'] = False
+else:
+    # 如果当前系统不是windows，则使用默认字体
+    # 设置中文字体（避免中文乱码）
+    plt.rcParams['font.sans-serif'] = ['SimHei']
+    plt.rcParams['axes.unicode_minus'] = False
 
 def load_models_and_tokenizer(config: Config):
     """加载原始模型、微调模型和 tokenizer"""
